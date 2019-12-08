@@ -1,0 +1,36 @@
+.jumbotron{
+    background-image: url(img/11.JPG);
+    background-size: cover;
+    height: 770px;
+    text-align: center;
+    margin-top:-10px;
+   
+}
+.jumbotron .display-4{
+    color: rgb(255, 255, 255);
+}
+.jumbotron p{
+    color: rgb(255, 255, 255);
+    margin-top: 10px;
+    font-size: 25px;
+}
+.jumbotron hr{
+    border-color: #d17c0c;
+    width: 500px;
+    border-width: 5px;
+}
+.jumbotron .btn{
+    background-color: #A0522D; 
+    border: none;
+    border-radius: 45px;
+    padding-right: 45px;
+    padding-left: 45px; 
+    margin-top: 45px;
+}
+#wrapper {
+    width: 870px;
+    margin: 0 auto;
+}
+footer {
+    color: #e76c07ee;
+}
