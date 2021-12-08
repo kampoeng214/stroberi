@@ -1,11 +1,13 @@
-pipeline {  
-    agent any 
-   
-    parameters {
-        booleanParam(name: 'Run', defaultValue: true, description: 'Toggle this value for testing')
-        choice(name: 'CICD', choices: ['CICD', 'CI'], description: 'pick CI / CI, CD, or Rollback')
-         
+pipeline {
+    agent { docker { image 'php' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'php --version'
+            }
+        }
     }
+}
     stages {
         stage('Clone Project') {
             steps{
@@ -60,13 +62,3 @@ pipeline {
     }
 }
 
-pipeline {
-    agent { docker { image 'php' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'php --version'
-            }
-        }
-    }
-}
