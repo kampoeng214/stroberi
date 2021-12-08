@@ -1,3 +1,4 @@
+
 pipeline {  
     agent any 
    
@@ -8,15 +9,6 @@ pipeline {
     }
 
  stages {
-     
-            
-         stage('gitlab') {
-          steps {
-             echo 'Notify GitLab'
-             updateGitlabCommitStatus name: 'build', state: 'pending'
-             updateGitlabCommitStatus name: 'build', state: 'success'
-          }    
-              
         stage('Clone Project') {
             steps{
                echo "Clone Project"
@@ -61,7 +53,6 @@ pipeline {
                     CICD == 'CICD'
                 }
             }
- 
             steps{
                 script {
                     sh 'echo passed'
@@ -70,3 +61,4 @@ pipeline {
         }
     }
 }
+
