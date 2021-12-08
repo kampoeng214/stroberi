@@ -8,6 +8,15 @@ pipeline {
     }
 
  stages {
+     
+            
+         stage('gitlab') {
+          steps {
+             echo 'Notify GitLab'
+             updateGitlabCommitStatus name: 'build', state: 'pending'
+             updateGitlabCommitStatus name: 'build', state: 'success'
+          }    
+              
         stage('Clone Project') {
             steps{
                echo "Clone Project"
@@ -52,14 +61,7 @@ pipeline {
                     CICD == 'CICD'
                 }
             }
-        
-         stage('gitlab') {
-          steps {
-             echo 'Notify GitLab'
-             updateGitlabCommitStatus name: 'build', state: 'pending'
-             updateGitlabCommitStatus name: 'build', state: 'success'
-          }    
-              
+ 
             steps{
                 script {
                     sh 'echo passed'
