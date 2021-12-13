@@ -29,7 +29,7 @@ pipeline {
                     CICD == 'CICD'
                 }
             }
-            steps{
+            steps{ 
                script {
                     echo "Push Image"
                 }
