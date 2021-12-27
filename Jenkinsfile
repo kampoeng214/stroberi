@@ -1,64 +1,37 @@
-
-pipeline {  
-    agent any 
-   
-    parameters { 
-        booleanParam(name: 'Run', defaultValue: true, description: 'Toggle this value for testing')
-        choice(name: 'CICD', choices: ['CICD', 'CI'], description: 'pick CI / CI, CD, or Rollback')
-         
-    }
-
- stages {
-        stage('Clone Project') {
+pipeline { 
+    agent any   
+       
+    stages {
+        stage('Ready To Deploy') {
             steps{
-               echo "Clone Project"
-            }
-        }
-
-        stage('Build Project') {
-            steps{
-               script {
-                    echo "Build Project"
-                }
+                echo "ready"
             }
         }
         
-        stage('Push Image') {
-            when {
-                expression {
-                    CICD == 'CICD'
-                }
-            }
-            steps{ 
-               script {
-                    echo "Push Image"
-                }
-            }
-        }
-        stage('Deployment') {
-            when {
-                expression {
-                    CICD == 'CICD'
-                }
-            }
+        stage('Deployment To Server aldo') {
             steps{
-               script {
-                    echo "Deployment"
-                }
+                echo "deploy to apache2"
+                    sshagent(credentials: ['Apache2']) {
+                    sh "cd .."
+                    sh "ls"
+                    sh "scp -r * root@13.233.158.29:/var/www/html/stroberi2"
+                    //sh "ssh root@3.111.35.31 cd /var/www/html/stroberi && pwd && git pull origin master"
+                    
+                 }    
             }
         }
-        stage('Run Testing Development') {
-            when {
-                expression {
-                    CICD == 'CICD'
-                }
-            }
+        stage('Deployment To Server aris') {
             steps{
-                script {
-                    sh 'echo passed'
-                }
+                echo "deploy to apache2"
+                    sshagent(credentials: ['Apache2']) {
+                    sh "cd .."
+                    sh "ls"
+                    sh "scp -r * ubuntu@18.118.247.110:/var/www/html/stroberi"
+                    //sh "ssh root@3.111.35.31 cd /var/www/html/stroberi && pwd && git pull origin master"
+                    
+                 }    
             }
         }
+        
     }
 }
-
