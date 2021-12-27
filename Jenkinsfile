@@ -19,7 +19,8 @@ pipeline {
                     
                  //}    
             //}
-        }
+        }//
+    
         stage('Deployment To Server aris') {
             steps{
                 echo "deploy to apache2"
