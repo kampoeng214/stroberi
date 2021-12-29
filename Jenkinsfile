@@ -13,11 +13,11 @@ pipeline {
                 echo "deploy to apache2"
                     sshagent(credentials: ['Apache2']) {
                     //sh "cd .." 
-                    sh "ssh root@18.224.22.246 -p 22 && docker exec -it eb4b4dcb5e5c bash && ls"
+                    //sh "ssh root@18.224.22.246 -p 22 && docker exec -it eb4b4dcb5e5c bash && ls"
                     //sh "docker"    
                     //sh "scp -r * root@18.224.22.246:docker exec -it eb4b4dcb5e5c bash && htdocs/akuy"
                     //sh "ssh root@3.111.35.31 cd /var/www/html/stroberi && pwd && git pull origin master"
-                    
+                    sh "scp -r * root@18.224.22.246:/var/www/html/akuy"
                  }    
             }
         }
