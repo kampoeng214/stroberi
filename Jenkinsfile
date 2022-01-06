@@ -17,7 +17,7 @@ pipeline {
                     //sh "docker"    
                     //sh "scp -r * root@18.224.22.246:docker exec -it eb4b4dcb5e5c bash && htdocs/akuy"
                     //sh "ssh root@3.111.35.31 cd /var/www/html/stroberi && pwd && git pull origin master"
-                    sh "scp -r * root@18.224.22.246:/var/www/html/akuy"
+                    sh "scp -r * root@3.133.84.143:/var/www/html/stroberi2"
                  }    
             }
         }
