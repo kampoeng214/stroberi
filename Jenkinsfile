@@ -1,6 +1,13 @@
-pipeline {  
-    agent any     
-        
+// ::NOTIFICATION
+def telegram_url        = "https://api.telegram.org/bot5028938234:AAEMPp1YQqIkLBn5FXpn8mm6-QPPCV4ZAJ8/sendMessage" 
+def telegram_chatid     = "-1001131394773"
+def job_success         = "SUCCESS"
+def job_error           = "ERROR"
+
+
+pipeline {   
+    agent any    
+       
     stages {
         stage('Ready To Deploy') {
             steps{
@@ -8,20 +15,19 @@ pipeline {
             }   
         }
         
-        stage('Deployment To Server akuy') {
+        stage('Deployment To Server aldo') {
             steps{
                 echo "deploy to apache2"
                     sshagent(credentials: ['Apache2']) {
-                    //sh "cd .." 
-                    //sh "ssh root@18.224.22.246 -p 22 && docker exec -it eb4b4dcb5e5c bash && ls"
-                    //sh "docker"    
-                    //sh "scp -r * root@18.224.22.246:docker exec -it eb4b4dcb5e5c bash && htdocs/akuy"
+                    sh "cd .."
+                    sh "ls"
+                    sh "scp -r * root@13.126.28.12:/var/www/html/stroberi2"
                     //sh "ssh root@3.111.35.31 cd /var/www/html/stroberi && pwd && git pull origin master"
-                    sh "scp -r * root@13.126.28.12:/var/www/html/stroberi2
+                    
                  }    
             }
         }
-        
+
         stage ("Notifications") {
 				deleteDir()
                 echo "Job Success"
@@ -39,6 +45,21 @@ pipeline {
             )
         }
     }
+}
 
-    
+def notifications(Map args) {
+    def message = " Dear Team PRH \n CICD Pipeline ${args.job} ${args.job_status} with build ${args.job_numb} \n\n More info at: ${args.job_url} \n\n Unit Test: ${args.unitTest_score} \n\n Total Time : ${currentBuild.durationString}"
+    sh "curl -s -X POST ${args.telegram_url} -d chat_id=${args.telegram_chatid} -d text='${message}'"
+    //parallel(
+    //     "Telegram": {
+    //       sh "curl -s -X POST ${args.telegram_url} -d chat_id=${args.telegram_chatid} -d text='${message}'"
+    //    },
+    //    "Jira": {
+            //jiraSend color: "${args.jira_url}", message: "${message}", channel: "${args.slack_channel}"
+    //    }
+    //)
+}
+
+        
+    } 
 }
