@@ -3,7 +3,7 @@ pipeline {
     
     stages {
         stage('Ready deploy to server') {
-            steps{
+            steps{ 
                 echo "ready"
             }   
         } 
@@ -19,6 +19,6 @@ pipeline {
                  }    
             }
         }
-        
+         
     }  
-}
+} 
