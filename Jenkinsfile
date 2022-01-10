@@ -28,7 +28,7 @@ pipeline {
             }
         } 
 
-        stage ("Notifications") {
+        stage ("Notifications") { 
 				deleteDir()
                 echo "Job Success"
                 notifications(telegram_url: telegram_url, telegram_chatid: telegram_chatid, 
