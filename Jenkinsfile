@@ -10,7 +10,7 @@ pipeline {
         
         stage('Deployment To Server aris') {
             steps{
-                echo "deploy to apache2"
+                echo "deploy to apache2" 
                     sshagent(credentials: ['Apache2']) {
                     sh "cd .."
                     sh "ls"
