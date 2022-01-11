@@ -6,7 +6,7 @@ pipeline {
             steps{ 
                 echo "ready"
             }   
-        }
+        } 
         
         stage('Deployment To Server') {
             steps{
