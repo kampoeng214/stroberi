@@ -1,7 +1,7 @@
 pipeline {    
     agent any          
 	
-    stages {
+    stages { 
         stage('Ready To Deploy') {
             steps{
                 echo "ready"
