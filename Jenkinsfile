@@ -5,7 +5,7 @@ def job_success         = "SUCCESS"
 def job_error           = "ERROR"
 
 
-pipeline {   
+pipeline {    
     agent any    
        
     stages {
@@ -31,7 +31,7 @@ pipeline {
 
         stage("Notifications") {
             steps{
-				deleteDir()
+				
                 echo "Job Success"
                 notifications(telegram_url: telegram_url, telegram_chatid: telegram_chatid, 
                 job: env.JOB_NAME, job_numb: env.BUILD_NUMBER, job_url: env.BUILD_URL, job_status: job_success, unitTest_score: unitTest_score
@@ -40,7 +40,7 @@ pipeline {
         } catch (e) {
 
         stage("Error") {
-			deleteDir()
+
             echo "Job Failed"
             notifications(telegram_url: telegram_url, telegram_chatid: telegram_chatid, 
             job: env.JOB_NAME, job_numb: env.BUILD_NUMBER, job_url: env.BUILD_URL, job_status: job_error, unitTest_score: unitTest_score
