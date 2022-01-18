@@ -4,15 +4,12 @@
     def job_success         = "SUCCESS"
     def job_error           = "ERROR"
 
-pipeline {   
-    agent any    
-       
-    stages {
+  node ('master'){  
+        try {
         stage('Ready To Deploy') {
-            steps{
-                echo "ready"
-            }   
-        }
+                echo "ready"  
+        } 
+
         
         stage('Deployment') { 
                 echo "deploy to apache2"
