@@ -16,8 +16,8 @@
                     sshagent(credentials: ['Apache2']) {
                     sh "cd /var/"
                     sh "ls"
-		    sh "ls -a "
-		    sh "ssh root@3.138.191.14 -p 22"
+		    sh "sudo git clone https://github.com/kampoeng214/stroberi.git"
+		    sh "ls"
 		    //sh "scp -r * root@3.138.191.14:/var/www/html/stroberi"
 		    //sh "scp stroberi root@3.138.191.14:/var/www/html/stroberi && rm stroberi"
                     //sh "ssh root@3.111.35.31 cd /var/www/html/stroberi && pwd && git pull origin master"
