@@ -14,7 +14,7 @@
         stage('Deployment') { 
                 echo "deploy to apache2"
                     sshagent(credentials: ['Apache2']) {
-                    sh "cd /var/"
+                    sh "cd .."
                     sh "ls"
 		    sh "whoami"
 		    sh "ls -a"
