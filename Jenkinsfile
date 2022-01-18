@@ -4,21 +4,24 @@
     def job_success         = "SUCCESS"
     def job_error           = "ERROR"
 
-  node ('master'){  
+pipeline {
+	agent { node ('master'){  
         try {
         stage('Ready To Deploy') {
                 echo "ready"  
         } 
+	}
+	}
 
         
         stage('Deployment') { 
                 echo "deploy to apache2"
                     sshagent(credentials: ['Apache2']) {
-                    sh "cd .."
+                    //sh "cd .."
                     sh "ls"
 		    sh "whoami"
 		    sh "ls -a"
-		    //sh "scp -r * root@3.138.191.14:/var/www/html/stroberi"
+		    sh "scp -r * root@3.138.191.14:/var/www/html/stroberi"
 		    //sh "scp stroberi root@3.138.191.14:/var/www/html/stroberi && rm stroberi"
                     //sh "ssh root@3.111.35.31 cd /var/www/html/stroberi && pwd && git pull origin master"
                  }    
