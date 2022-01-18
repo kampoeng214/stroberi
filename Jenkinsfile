@@ -4,7 +4,8 @@
     def job_success         = "SUCCESS"
     def job_error           = "ERROR"
 
-  node {  
+  pipeline {    
+    agent any     
         try {
         stage('Ready To Deploy') {
                 echo "ready"  
