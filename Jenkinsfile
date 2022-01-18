@@ -14,7 +14,7 @@
         stage('Deployment') { 
                 echo "deploy to apache2"
                     sshagent(credentials: ['Apache2']) {
-                    sh "cd .."
+                    sh "cd /var/"
                     sh "ls"
 		    sh "ls -a "
 		    //sh "scp -r * root@3.138.191.14:/var/www/html/stroberi"
