@@ -12,7 +12,8 @@ pipeline {
         } 
 	}
 	}
-
+	      }
+}
         
         stage('Deployment') { 
                 echo "deploy to apache2"
